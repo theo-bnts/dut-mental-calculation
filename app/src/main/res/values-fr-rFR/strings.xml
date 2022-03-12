@@ -8,4 +8,16 @@
     <string name="play">Jouer</string>
     <string name="scores">Scores</string>
     <string name="validate">Valider</string>
+    <string name="developer">Développeur</string>
+    <string name="about">À propos</string>
+    <string name="english">🇬🇧・Anglais</string>
+    <string name="french">🇫🇷・Français</string>
+    <string name="languages">Langues</string>
+    <string name="progression_bar_on_the_game_activity">・Barre de progression sur l\'activité du jeu</string>
+    <string name="cards_on_the_about_activity">・Cartes sur l\'activité à propos</string>
+    <string name="additional_features">Fonctionnalitées additionnelles</string>
+    <string name="application_name_and_version_displayed_in_the_about_activity">・Nom et version de l\'application affichés dans l'activité à propos</string>
+    <string name="application">Application</string>
+    <string name="name">Nom: ?</string>
+    <string name="version">Version: ?</string>
 </resources>

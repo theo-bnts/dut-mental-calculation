@@ -22,4 +22,17 @@
     <string name="play">Play</string>
     <string name="scores">Scores</string>
     <string name="validate">Validate</string>
+    <string name="theo_bontemps" translatable="false">Théo BONTEMPS</string>
+    <string name="developer">Developer</string>
+    <string name="about">About</string>
+    <string name="english">🇬🇧 English</string>
+    <string name="french">🇫🇷 French</string>
+    <string name="languages">Languages</string>
+    <string name="progression_bar_on_the_game_activity">・Progression bar on the game activity</string>
+    <string name="cards_on_the_about_activity">・Cards on the about activity</string>
+    <string name="additional_features">Additional features</string>
+    <string name="application_name_and_version_displayed_in_the_about_activity">・Application name and version displayed in the about activity</string>
+    <string name="application">Application</string>
+    <string name="name">Name: ?</string>
+    <string name="version">Version: ?</string>
 </resources>

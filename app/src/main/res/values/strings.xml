@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MentalCalculation</string>
+    <string name="app_name">Mental Calculation</string>
     <string name="one" translatable="false">1</string>
     <string name="two" translatable="false">2</string>
     <string name="three" translatable="false">3</string>

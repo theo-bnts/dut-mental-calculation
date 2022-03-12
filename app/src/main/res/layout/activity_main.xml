@@ -27,6 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/scores" />
+
+        <Button
+            android:id="@+id/button_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

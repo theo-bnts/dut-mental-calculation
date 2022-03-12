@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calcul mental</string>
+    <string name="unauthorized_action">Action non-autorisée !</string>
+    <string name="delete">Effacer</string>
+    <string name="interrogation">\?</string>
+    <string name="lives">Vies: ?</string>
+    <string name="play">Jouer</string>
+    <string name="scores">Scores</string>
+    <string name="validate">Valider</string>
+</resources>

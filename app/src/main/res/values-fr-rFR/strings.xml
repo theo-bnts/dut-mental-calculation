@@ -18,6 +18,6 @@
     <string name="additional_features">Fonctionnalitées additionnelles</string>
     <string name="application_name_and_version_displayed_in_the_about_activity">・Nom et version de l\'application affichés dans l\'activité à propos</string>
     <string name="application">Application</string>
-    <string name="name">Nom: ?</string>
+    <string name="id">ID: ?</string>
     <string name="version">Version: ?</string>
 </resources>

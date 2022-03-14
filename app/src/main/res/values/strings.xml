@@ -35,4 +35,7 @@
     <string name="application">Application</string>
     <string name="id">ID: ?</string>
     <string name="version">Version: ?</string>
+    <string name="nickname">Nickname</string>
+    <string name="score">Score</string>
+    <string name="level">Level</string>
 </resources>

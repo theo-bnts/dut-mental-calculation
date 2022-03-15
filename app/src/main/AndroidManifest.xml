@@ -11,16 +11,16 @@
         android:theme="@style/Theme.MentalCalculation"
         android:hardwareAccelerated="true">
         <activity
-            android:name=".AboutActivity"
+            android:name=".activities.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".ScoresActivity"
+            android:name=".activities.ScoresActivity"
             android:exported="false" />
         <activity
-            android:name=".GameActivity"
+            android:name=".activities.GameActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

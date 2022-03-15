@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".activities.GameActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,17 +17,19 @@
 
         <TextView
             android:id="@+id/textView_question"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="@string/interrogation"
             android:textColor="?attr/colorPrimary"
             android:textSize="40sp"
             tools:textColorHint="?attr/colorPrimary" />
 
         <TextView
-            android:id="@+id/textView_compute"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView_answer"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="@string/zero"
             android:textSize="40sp" />
 

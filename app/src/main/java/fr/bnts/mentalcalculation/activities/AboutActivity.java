@@ -1,8 +1,12 @@
-package fr.bnts.mentalcalculation;
+package fr.bnts.mentalcalculation.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import fr.bnts.mentalcalculation.BuildConfig;
+import fr.bnts.mentalcalculation.R;
+import fr.bnts.mentalcalculation.Tools;
 
 public class AboutActivity extends AppCompatActivity {
 

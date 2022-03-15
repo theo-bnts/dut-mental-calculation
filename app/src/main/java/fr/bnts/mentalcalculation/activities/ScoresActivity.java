@@ -1,14 +1,16 @@
-package fr.bnts.mentalcalculation;
+package fr.bnts.mentalcalculation.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GameActivity extends AppCompatActivity {
+import fr.bnts.mentalcalculation.R;
+
+public class ScoresActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_scores);
     }
 }

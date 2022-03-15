@@ -38,4 +38,6 @@
     <string name="nickname">Nickname</string>
     <string name="score">Score</string>
     <string name="level">Level</string>
+    <string name="correct_answer">Correct answer!</string>
+    <string name="wrong_answer">Wrong answer!</string>
 </resources>

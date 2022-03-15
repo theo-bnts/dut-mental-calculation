@@ -23,4 +23,6 @@
     <string name="nickname">Pseudo</string>
     <string name="score">Score</string>
     <string name="level">Niveau</string>
+    <string name="correct_answer">Bonne réponse !</string>
+    <string name="wrong_answer">Mauvaise réponse !</string>
 </resources>

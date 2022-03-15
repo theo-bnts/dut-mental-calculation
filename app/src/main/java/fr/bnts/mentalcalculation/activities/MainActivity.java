@@ -1,10 +1,12 @@
-package fr.bnts.mentalcalculation;
+package fr.bnts.mentalcalculation.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import fr.bnts.mentalcalculation.R;
 
 public class MainActivity extends AppCompatActivity {
 

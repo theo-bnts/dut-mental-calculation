@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuItem_remaining_questions"
+        android:title="@string/questions"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menuItem_lives"
         android:title="@string/lives"
         app:showAsAction="always" />
+
 </menu>

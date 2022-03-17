@@ -1,4 +1,4 @@
-package fr.bnts.mentalcalculation;
+package fr.bnts.mentalcalculation.model;
 
 public enum Operation {
     ADD('+'),

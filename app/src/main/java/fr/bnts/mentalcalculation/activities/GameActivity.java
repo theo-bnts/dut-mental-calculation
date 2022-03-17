@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import fr.bnts.mentalcalculation.Operation;
+import fr.bnts.mentalcalculation.model.Operation;
 import fr.bnts.mentalcalculation.R;
 import fr.bnts.mentalcalculation.Tools;
 

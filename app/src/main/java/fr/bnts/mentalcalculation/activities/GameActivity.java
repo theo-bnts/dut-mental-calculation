@@ -31,7 +31,8 @@ public class GameActivity extends AppCompatActivity {
     private int wrongAnswersCredit = 3;
 
     private long answer = 0;
-    private int correctAnswer;
+    private float correctAnswer;
+    private String serializedCalculation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,8 @@ public class GameActivity extends AppCompatActivity {
         Button validateButton = findViewById(R.id.button_validate);
         validateButton.setOnClickListener(view -> validateAnswer());
 
-        String calculation = createCalculation();
-        updateQuestionTextView(calculation);
+        createCalculationWithPositiveIntegerResult();
+        updateQuestionTextView(this.serializedCalculation);
     }
 
     private int getRandom() {
@@ -75,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
         return ThreadLocalRandom.current().nextInt(randomMinimumValue, randomMaximumValue + 1);
     }
 
-    private int computeCalculation(int firstInteger, int secondInteger, Operation operationType) {
+    private float computeCalculation(int firstInteger, int secondInteger, Operation operationType) {
         switch (operationType) {
             case ADD:
                 return firstInteger + secondInteger;
@@ -84,7 +85,7 @@ public class GameActivity extends AppCompatActivity {
             case MULTIPLY:
                 return firstInteger * secondInteger;
             case DIVIDE:
-                return firstInteger / secondInteger;
+                return (float)firstInteger / secondInteger;
             default:
                 return -1;
         }
@@ -95,9 +96,7 @@ public class GameActivity extends AppCompatActivity {
         question.setText(value);
     }
 
-    private String createCalculation() {
-        // TODO: Only validate calculation with an integer result
-
+    private void createCalculation() {
         int firstRandom = getRandom();
         int secondRandom = getRandom();
 
@@ -111,7 +110,13 @@ public class GameActivity extends AppCompatActivity {
 
         this.correctAnswer = computeCalculation(firstRandom, secondRandom, operationType);
 
-        return serializedFirstRandom +  ' ' + operationType.getSymbol() + ' ' + serializedSecondRandom;
+        this.serializedCalculation = serializedFirstRandom +  ' ' + operationType.getSymbol() + ' ' + serializedSecondRandom;
+    }
+
+    private void createCalculationWithPositiveIntegerResult() {
+        do {
+            createCalculation();
+        } while (!Tools.isInteger(this.correctAnswer) || this.correctAnswer < 0);
     }
 
     private void updateAnswerTextView(long value) {
@@ -171,8 +176,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void newQuestion() {
-        String calculation = createCalculation();
-        updateQuestionTextView(calculation);
+        createCalculationWithPositiveIntegerResult();
+        updateQuestionTextView(this.serializedCalculation);
 
         this.answer = 0;
         updateAnswerTextView(this.answer);
@@ -188,6 +193,7 @@ public class GameActivity extends AppCompatActivity {
     private void endGame() {
         // TODO: Save scores
 
+        finish();
         openScoresActivity();
     }
 

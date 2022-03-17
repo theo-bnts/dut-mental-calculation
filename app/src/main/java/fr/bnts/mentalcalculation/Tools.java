@@ -19,4 +19,8 @@ public class Tools {
     public static String replaceInterrogation(String hint, int value) {
         return replaceInterrogation(hint, Integer.toString(value));
     }
+
+    public static boolean isInteger(float number) {
+        return number % 1 == 0;
+    }
 }

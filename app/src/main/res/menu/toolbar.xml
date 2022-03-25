@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/menuItem_remaining_questions"
-        android:title="@string/questions"
-        app:showAsAction="always" />
+        android:title="@string/questions_interrogation"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menuItem_lives"
-        android:title="@string/lives"
+        android:title="@string/lives_interrogation"
         app:showAsAction="always" />
 
 </menu>

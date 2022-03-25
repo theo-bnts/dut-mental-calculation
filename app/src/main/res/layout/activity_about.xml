@@ -139,13 +139,13 @@
                     android:id="@+id/textView_application_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/id" />
+                    android:hint="@string/id_interrogation" />
 
                 <TextView
                     android:id="@+id/textView_application_version"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/version" />
+                    android:hint="@string/version_interrogation" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

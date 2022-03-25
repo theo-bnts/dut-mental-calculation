@@ -17,8 +17,8 @@
     <string name="placeholder" translatable="false">Placeholder</string>
     <string name="unauthorized_action">Unauthorized action!</string>
     <string name="delete">Delete</string>
-    <string name="interrogation">\?</string>
-    <string name="lives">Lives: ?</string>
+    <string name="interrogation" translatable="false">\?</string>
+    <string name="lives_interrogation">Lives: ?</string>
     <string name="play">Play</string>
     <string name="scores">Scores</string>
     <string name="validate">Validate</string>
@@ -33,12 +33,14 @@
     <string name="additional_features">Additional features</string>
     <string name="application_name_and_version_displayed_in_the_about_activity">・Application ID and version displayed in the about activity</string>
     <string name="application">Application</string>
-    <string name="id">ID: ?</string>
-    <string name="version">Version: ?</string>
+    <string name="id_interrogation">ID: ?</string>
+    <string name="version_interrogation">Version: ?</string>
     <string name="nickname">Nickname</string>
     <string name="score">Score</string>
     <string name="level">Level</string>
     <string name="correct_answer">Correct answer!</string>
     <string name="wrong_answer">Wrong answer!</string>
-    <string name="questions">Questions: ?</string>
+    <string name="questions_interrogation">Questions: ?</string>
+    <string name="dash" translatable="false">_</string>
+    <string name="lives">Lives</string>
 </resources>

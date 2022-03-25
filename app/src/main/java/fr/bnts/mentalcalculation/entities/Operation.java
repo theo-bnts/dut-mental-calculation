@@ -1,12 +1,13 @@
-package fr.bnts.mentalcalculation.model;
+package fr.bnts.mentalcalculation.entities;
 
 public enum Operation {
+
     ADD('+'),
     MULTIPLY('x'),
-    SUBSTRACT('-'),
+    SUBTRACT('-'),
     DIVIDE('/');
 
-    private char symbol;
+    private final char symbol;
 
     Operation(char symbol) {
         this.symbol = symbol;
@@ -15,4 +16,5 @@ public enum Operation {
     public char getSymbol() {
         return symbol;
     }
+
 }

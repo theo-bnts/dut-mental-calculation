@@ -12,33 +12,38 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-import fr.bnts.mentalcalculation.model.Operation;
+import fr.bnts.mentalcalculation.entities.Calculation;
 import fr.bnts.mentalcalculation.R;
 import fr.bnts.mentalcalculation.Tools;
+import fr.bnts.mentalcalculation.entities.Score;
+import fr.bnts.mentalcalculation.services.DatabaseHelper;
+import fr.bnts.mentalcalculation.services.ScoresStorage;
 
 public class GameActivity extends AppCompatActivity {
 
     private Context context;
     private Menu menu;
+    private ScoresStorage scoresStorage;
 
     private int remainingQuestions = 10;
-    private int score = 0;
     private int wrongAnswersCredit = 3;
+    private int score = 0;
 
-    private long answer = 0;
-    private float correctAnswer;
-    private String serializedCalculation;
+    private Calculation calculation;
+    private long userAnswer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         this.context = getApplicationContext();
+
+        this.scoresStorage = new ScoresStorage(new DatabaseHelper(this));
 
         setContentView(R.layout.activity_game);
 
@@ -56,93 +61,48 @@ public class GameActivity extends AppCompatActivity {
         );
 
         for (Button button: buttons) {
-            button.setOnClickListener(view -> incrementAnswer(button));
+            button.setOnClickListener(view -> incrementUserAnswer(button));
         }
 
         Button deleteLastCharacterButton = findViewById(R.id.button_delete);
-        deleteLastCharacterButton.setOnClickListener(view -> decrementAnswer());
+        deleteLastCharacterButton.setOnClickListener(view -> decrementUserAnswer());
 
         Button validateButton = findViewById(R.id.button_validate);
         validateButton.setOnClickListener(view -> validateAnswer());
 
-        createCalculationWithPositiveIntegerResult();
-        updateQuestionTextView(this.serializedCalculation);
+        this.calculation = new Calculation(true);
+        updateQuestionTextView();
     }
 
-    private int getRandom() {
-        int randomMinimumValue = 2;
-        int randomMaximumValue = 10;
-
-        return ThreadLocalRandom.current().nextInt(randomMinimumValue, randomMaximumValue + 1);
-    }
-
-    private float computeCalculation(int firstInteger, int secondInteger, Operation operationType) {
-        switch (operationType) {
-            case ADD:
-                return firstInteger + secondInteger;
-            case SUBSTRACT:
-                return firstInteger - secondInteger;
-            case MULTIPLY:
-                return firstInteger * secondInteger;
-            case DIVIDE:
-                return (float)firstInteger / secondInteger;
-            default:
-                return -1;
-        }
-    }
-
-    private void updateQuestionTextView(String value) {
+    private void updateQuestionTextView() {
         TextView question = findViewById(R.id.textView_question);
-        question.setText(value);
+        question.setText(this.calculation.serialize());
     }
 
-    private void createCalculation() {
-        int firstRandom = getRandom();
-        int secondRandom = getRandom();
-
-        String serializedFirstRandom = Integer.toString(firstRandom);
-        String serializedSecondRandom = Integer.toString(secondRandom);
-
-        Operation[] operationTypes = { Operation.ADD, Operation.SUBSTRACT, Operation.MULTIPLY, Operation.DIVIDE };
-
-        int randomIndex = new Random().nextInt(operationTypes.length);
-        Operation operationType = operationTypes[randomIndex];
-
-        this.correctAnswer = computeCalculation(firstRandom, secondRandom, operationType);
-
-        this.serializedCalculation = serializedFirstRandom +  ' ' + operationType.getSymbol() + ' ' + serializedSecondRandom;
-    }
-
-    private void createCalculationWithPositiveIntegerResult() {
-        do {
-            createCalculation();
-        } while (!Tools.isInteger(this.correctAnswer) || this.correctAnswer < 0);
-    }
-
-    private void updateAnswerTextView(long value) {
+    private void updateUserAnswerTextView() {
         TextView answer = findViewById(R.id.textView_answer);
 
-        if (value > 0) {
-            String serializedAnswer = Long.toString(value);
+        if (this.userAnswer > 0) {
+            String serializedAnswer = Long.toString(this.userAnswer);
             answer.setText(serializedAnswer);
         } else {
             answer.setText("");
         }
     }
 
-    private void incrementAnswer(Button pressedButton) {
+    private void incrementUserAnswer(Button pressedButton) {
         int pressedNumber = Integer.parseInt((String) pressedButton.getText());
-        this.answer = this.answer * 10 + pressedNumber;
-        updateAnswerTextView(this.answer);
+        this.userAnswer = this.userAnswer * 10 + pressedNumber;
+        updateUserAnswerTextView();
     }
 
-    private void decrementAnswer() {
-        if (this.answer >= 10) {
-            this.answer /= 10;
-            updateAnswerTextView(this.answer);
-        } else if (this.answer > 0) {
-            this.answer = 0;
-            updateAnswerTextView(this.answer);
+    private void decrementUserAnswer() {
+        if (this.userAnswer >= 10) {
+            this.userAnswer /= 10;
+            updateUserAnswerTextView();
+        } else if (this.userAnswer > 0) {
+            this.userAnswer = 0;
+            updateUserAnswerTextView();
         } else {
             Toast toast = Toast.makeText(context, R.string.unauthorized_action, 3 * 1000);
             toast.show();
@@ -150,7 +110,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void displayLives() {
-        String livesHint = getString(R.string.lives);
+        String livesHint = getString(R.string.lives_interrogation);
         String livesText = Tools.replaceInterrogation(livesHint, this.wrongAnswersCredit);
 
         MenuItem livesMenu = this.menu.findItem(R.id.menuItem_lives);
@@ -163,7 +123,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void displayRemainingQuestions() {
-        String remainingQuestionsHint = getString(R.string.questions);
+        String remainingQuestionsHint = getString(R.string.questions_interrogation);
         String remainingQuestionText = Tools.replaceInterrogation(remainingQuestionsHint, this.remainingQuestions);
 
         MenuItem remainingQuestionsMenu = this.menu.findItem(R.id.menuItem_remaining_questions);
@@ -176,11 +136,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void newQuestion() {
-        createCalculationWithPositiveIntegerResult();
-        updateQuestionTextView(this.serializedCalculation);
+        this.calculation = new Calculation(true);
+        updateQuestionTextView();
 
-        this.answer = 0;
-        updateAnswerTextView(this.answer);
+        this.userAnswer = 0;
+        updateUserAnswerTextView();
 
         decrementRemainingQuestions();
     }
@@ -190,15 +150,28 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void endGame() {
-        // TODO: Save scores
+    private void saveScore() {
+        String pattern = "yyyy-MM-dd HH:mm:ss.SSS";
 
-        finish();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime now = LocalDateTime.now();
+
+        String date = dtf.format(now);
+
+        String nickname = getIntent().getStringExtra("NICKNAME");
+        Score score = new Score(nickname, this.score, this.wrongAnswersCredit, date);
+        scoresStorage.add(score);
+    }
+
+    private void endGame() {
+        this.saveScore();
+
         openScoresActivity();
+        finish();
     }
 
     private void validateAnswer() {
-        if (this.answer == this.correctAnswer) {
+        if (this.userAnswer == this.calculation.getResult()) {
             Toast toast = Toast.makeText(context, R.string.correct_answer, 3 * 1000);
             toast.show();
 
@@ -207,14 +180,14 @@ public class GameActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, R.string.wrong_answer, 3 * 1000);
             toast.show();
 
-            if (this.wrongAnswersCredit > 1) {
-                decrementLives();
-            } else {
+            decrementLives();
+
+            if (this.wrongAnswersCredit == 0) {
                 endGame();
             }
         }
 
-        if (this.remainingQuestions > 0) {
+        if (this.remainingQuestions > 1) {
             newQuestion();
         } else {
             endGame();

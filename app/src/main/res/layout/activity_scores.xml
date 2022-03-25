@@ -22,6 +22,7 @@
             app:cardUseCompatPadding="true">
 
             <TableLayout
+                android:id="@+id/tableLayout_scores"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -46,14 +47,15 @@
                         android:textColor="?attr/colorPrimary" />
 
                     <TextView
-                        android:id="@+id/textView_level_title"
+                        android:id="@+id/textView_lives_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/level"
+                        android:text="@string/lives"
                         android:textColor="?attr/colorPrimary" />
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/tableRow_hint"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -61,19 +63,19 @@
                         android:id="@+id/textView_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/interrogation" />
+                        android:hint="@string/dash" />
 
                     <TextView
                         android:id="@+id/textView_score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/interrogation" />
+                        android:hint="@string/dash" />
 
                     <TextView
                         android:id="@+id/textView_level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/interrogation" />
+                        android:hint="@string/dash" />
                 </TableRow>
 
             </TableLayout>

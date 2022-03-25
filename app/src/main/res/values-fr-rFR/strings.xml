@@ -3,8 +3,7 @@
     <string name="app_name">Calcul mental</string>
     <string name="unauthorized_action">Action non-autorisée !</string>
     <string name="delete">Effacer</string>
-    <string name="interrogation">\?</string>
-    <string name="lives">Vies: ?</string>
+    <string name="lives_interrogation">Vies: ?</string>
     <string name="play">Jouer</string>
     <string name="scores">Scores</string>
     <string name="validate">Valider</string>
@@ -18,12 +17,13 @@
     <string name="additional_features">Fonctionnalitées additionnelles</string>
     <string name="application_name_and_version_displayed_in_the_about_activity">・Nom et version de l\'application affichés dans l\'activité à propos</string>
     <string name="application">Application</string>
-    <string name="id">ID: ?</string>
-    <string name="version">Version: ?</string>
+    <string name="id_interrogation">ID: ?</string>
+    <string name="version_interrogation">Version: ?</string>
     <string name="nickname">Pseudo</string>
     <string name="score">Score</string>
     <string name="level">Niveau</string>
     <string name="correct_answer">Bonne réponse !</string>
     <string name="wrong_answer">Mauvaise réponse !</string>
-    <string name="questions">Questions: ?</string>
+    <string name="questions_interrogation">Questions: ?</string>
+    <string name="lives">Vies</string>
 </resources>

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button playButton = findViewById(R.id.button_play);
-        playButton.setOnClickListener(view -> openGameActivity());
+        playButton.setOnClickListener(view -> openNicknameActivity());
 
         Button scoresButton = findViewById(R.id.button_scores);
         scoresButton.setOnClickListener(view -> openScoresActivity());
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         aboutButton.setOnClickListener(view -> openAboutActivity());
     }
 
-    private void openGameActivity() {
-        Intent intent = new Intent(this, GameActivity.class);
+    private void openNicknameActivity() {
+        Intent intent = new Intent(this, NicknameActivity.class);
         startActivity(intent);
     }
 
